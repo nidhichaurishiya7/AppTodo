@@ -1,0 +1,5 @@
+<mat-toolbar class="app-name">{{title}}</mat-toolbar>
+<app-to-do-input></app-to-do-input>
+<div *ngFor='let todolist of todoserservice.getToDoList()'>
+    <app-to-do-list-items [todolist]="todolist"></app-to-do-list-items>
+</div>
