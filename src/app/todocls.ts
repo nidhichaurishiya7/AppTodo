@@ -1,9 +1,13 @@
 export class Todocls {
+    userId: number;
     id: number;
-    itemName: string;
+    title: string;
+    completed: boolean;
 
-    constructor(id: number, itemName: string){
-            this.id =  id;
-            this.itemName = itemName;
+    constructor(userId: number, id: number, title: string, completed: boolean) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.completed = completed;
     }
 }

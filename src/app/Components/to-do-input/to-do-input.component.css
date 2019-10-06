@@ -1,11 +1,17 @@
-.app-input-fill{
-    border:blue;
-    border-style: double;
-    margin-left:175px;
-   margin-top: 20px;
-   width: 70%;
+table{
+    width: 100%;
 }
+
+.app-input-fill{
+margin: 15px;
+float: left;
+}
+
+.app-input-filter{
+    float: right;
+    margin: 15px;
+}
+
 .app-add-button{
-    color:cornsilk;
-    margin-left: 50px;
+    margin: 25px;
 }

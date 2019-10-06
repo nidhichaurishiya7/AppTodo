@@ -1,4 +1,40 @@
-    <mat-form-field class="app-input-fill" >
-      <input matInput placeholder="Create List Item" [(ngModel)]="listItem">
-    </mat-form-field>
-    <button mat-raised-button class="app-add-button" color="primary" (click)=addListItem()>Add</button>
+<div class="mat-elevation-z8">
+  <mat-form-field class="app-input-fill">
+    <input matInput placeholder="Create List Item" [(ngModel)]="listItem">
+  </mat-form-field>
+  <button mat-raised-button class="app-add-button" color="primary" (click)=addListItem()>Add</button>
+
+  <mat-form-field class="app-input-filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <table mat-table class="app-table-dcor" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let todolistItem"> {{todolistItem.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td mat-cell *matCellDef="let todolistItem"> {{todolistItem.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Completed </th>
+      <td mat-cell *matCellDef="let todolistItem"> {{todolistItem.completed}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+      <td mat-cell *matCellDef="let todolistItem">
+        <mat-icon (click)="delete(todolistItem.id)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
